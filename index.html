@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Chaos Game</title>
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="index.js"></script>
+        <script>
+            var index = 0;
+            var minCorners = 3;
+            var maxCorners = 6;
+
+            function go() {
+                chaosgame.setNumCorners(minCorners + index);
+                chaosgame.start();
+                index = (index + 1) % (maxCorners - minCorners + 1);
+            }
+
+            go();
+            setInterval(go, 120000);
+        </script>
+    </body>
+</html>
