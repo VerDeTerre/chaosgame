@@ -5,20 +5,39 @@
     </head>
     <body>
         <div id="main"></div>
+        <select id="numVertexes"></select>
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <button id="restart">Restart</button>
         <script src="index.js"></script>
         <script>
-            var index = 0;
-            var minCorners = 3;
-            var maxCorners = 6;
+            var numVertexes = document.getElementById('numVertexes');
 
-            function go() {
-                chaosgame.setNumCorners(minCorners + index);
-                chaosgame.start();
-                index = (index + 1) % (maxCorners - minCorners + 1);
+            for (var i = 3; i <= 10; i++) {
+                var option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                numVertexes.appendChild(option);
             }
 
-            go();
-            setInterval(go, 120000);
+            numVertexes.addEventListener('change', function() {
+                chaosgame.setNumVertexes(numVertexes.value);
+                chaosgame.restart();
+            });
+
+            document.getElementById('play').addEventListener('click', function() {
+                chaosgame.start();
+            });
+
+            document.getElementById('pause').addEventListener('click', function() {
+                chaosgame.stop();
+            });
+
+            document.getElementById('restart').addEventListener('click', function() {
+                chaosgame.restart();
+            });
+
+            chaosgame.start();
         </script>
     </body>
 </html>

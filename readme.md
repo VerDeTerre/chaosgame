@@ -4,7 +4,7 @@ This demonstration was inspired by the [Chaos Game](https://www.youtube.com/watc
 
 The basic idea is that starting with a polygon, a fractal pattern will emerge within by repeatedly moving a fixed proportion (in this case, halfway) towards a randomly selected vertex and marking the resulting point.
 
-This example cycles through polygons of three to six sides, spending two minutes each rendering. To view, open [index.html](index.html) in your browser.
+To view, clone the repo and open index.html in your browser. Controls are provided to select the number of vertexes (which will restart the generation), play, pause and restart.
 
 Here's how a triangle can end up looking:
 
