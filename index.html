@@ -27,13 +27,17 @@
                 <option value="100">100</option>
                 <option value="10000">10000</option>
             </select>
-            <button id="play">Play</button>
+            <button id="play" disabled="disabled">Play</button>
             <button id="pause">Pause</button>
             <button id="restart">Restart</button>
         </div>
         <script src="index.js"></script>
         <script>
             var numVertexes = document.getElementById('numVertexes');
+            var loopsPerUpdate = document.getElementById('loops-per-update');
+            var play = document.getElementById('play');
+            var pause = document.getElementById('pause');
+            var restart = document.getElementById('restart');
 
             for (var i = 3; i <= 10; i++) {
                 var option = document.createElement('option');
@@ -45,24 +49,30 @@
             numVertexes.addEventListener('change', function() {
                 chaosgame.setNumVertexes(numVertexes.value);
                 chaosgame.restart();
+                play.disabled = true;
+                pause.disabled = false;
             });
-
-            var loopsPerUpdate = document.getElementById('loops-per-update');
 
             loopsPerUpdate.addEventListener('change', function() {
                 chaosgame.setLoopsPerUpdate(loopsPerUpdate.value);
             });
 
-            document.getElementById('play').addEventListener('click', function() {
+            play.addEventListener('click', function() {
                 chaosgame.start();
+                play.disabled = true;
+                pause.disabled = false;
             });
 
-            document.getElementById('pause').addEventListener('click', function() {
+            pause.addEventListener('click', function() {
                 chaosgame.stop();
+                play.disabled = false;
+                pause.disabled = true;
             });
 
-            document.getElementById('restart').addEventListener('click', function() {
+            restart.addEventListener('click', function() {
                 chaosgame.restart();
+                play.disabled = true;
+                pause.disabled = false;
             });
 
             chaosgame.setNumVertexes(numVertexes.value);
