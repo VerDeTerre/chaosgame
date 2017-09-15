@@ -17,7 +17,7 @@ var chaosgame = (function() {
     var interval;
 
     var initialized = false;
-    var speed = 500;
+    var loopsPerUpdate = 500;
 
     function getContext() {
         if (!mainElement) {
@@ -60,12 +60,14 @@ var chaosgame = (function() {
     }
 
     function start() {
+        stop();
+
         if (!initialized) {
             initialize();
         }
 
         interval = setInterval(function() {
-            for (var i = 0; i < speed; i++) {
+            for (var i = 0; i < loopsPerUpdate; i++) {
                 var index = Math.floor(Math.random() * numVertexes);
                 var vertex = vertexes[index];
                 currentX = (currentX + vertex[0]) / 2;
@@ -101,8 +103,8 @@ var chaosgame = (function() {
         mainElement = element;
     }
 
-    function setSpeed(s) {
-        speed = s;
+    function setLoopsPerUpdate(loops) {
+        loopsPerUpdate = loops;
     }
 
     return {
@@ -112,6 +114,6 @@ var chaosgame = (function() {
         setDimensions: setDimensions,
         setNumVertexes: setNumVertexes,
         setMainElement: setMainElement,
-        setSpeed: setSpeed
+        setLoopsPerUpdate: setLoopsPerUpdate
     };
 })();

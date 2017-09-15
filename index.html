@@ -22,10 +22,10 @@
             <h1>Chaos Game</h1>
             <div id="main"></div>
             Vertexes: <select id="numVertexes"></select>
-            Speed: <select id="speed">
-                <option value="1">Slow</option>
-                <option value="100">Quick</option>
-                <option value="10000">Fast</option>
+            Loops Per Update: <select id="loops-per-update">
+                <option value="1">1</option>
+                <option value="100">100</option>
+                <option value="10000">10000</option>
             </select>
             <button id="play">Play</button>
             <button id="pause">Pause</button>
@@ -47,10 +47,10 @@
                 chaosgame.restart();
             });
 
-            var speed = document.getElementById('speed');
+            var loopsPerUpdate = document.getElementById('loops-per-update');
 
-            speed.addEventListener('change', function() {
-                chaosgame.setSpeed(speed.value);
+            loopsPerUpdate.addEventListener('change', function() {
+                chaosgame.setLoopsPerUpdate(loopsPerUpdate.value);
             });
 
             document.getElementById('play').addEventListener('click', function() {
@@ -66,7 +66,7 @@
             });
 
             chaosgame.setNumVertexes(numVertexes.value);
-            chaosgame.setSpeed(speed.value);
+            chaosgame.setLoopsPerUpdate(loopsPerUpdate.value);
             chaosgame.start();
         </script>
     </body>
