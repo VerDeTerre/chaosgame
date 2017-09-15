@@ -2,13 +2,30 @@
 <html>
     <head>
         <title>Chaos Game</title>
+        <style type="text/css">
+            body {
+                font-family: sans-serif;
+            }
+            h1 {
+                font-size: 14pt;
+                margin: 0;
+            }
+            #content {
+                border: 1px solid #dddddd;
+                display: inline-block;
+                padding: 1em;
+            }
+        </style>
     </head>
     <body>
-        <div id="main"></div>
-        <select id="numVertexes"></select>
-        <button id="play">Play</button>
-        <button id="pause">Pause</button>
-        <button id="restart">Restart</button>
+        <div id="content">
+            <h1>Chaos Game</h1>
+            <div id="main"></div>
+            Vertexes: <select id="numVertexes"></select>
+            <button id="play">Play</button>
+            <button id="pause">Pause</button>
+            <button id="restart">Restart</button>
+        </div>
         <script src="index.js"></script>
         <script>
             var numVertexes = document.getElementById('numVertexes');
@@ -37,6 +54,7 @@
                 chaosgame.restart();
             });
 
+            chaosgame.setNumVertexes(numVertexes.value);
             chaosgame.start();
         </script>
     </body>
