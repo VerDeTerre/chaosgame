@@ -17,6 +17,7 @@ var chaosgame = (function() {
     var interval;
 
     var initialized = false;
+    var speed = 500;
 
     function getContext() {
         if (!mainElement) {
@@ -54,6 +55,7 @@ var chaosgame = (function() {
         currentX = vertexes[0][0];
         currentY = vertexes[0][1];
 
+        lastTimestamp = new Date();
         initialized = true;
     }
 
@@ -63,15 +65,17 @@ var chaosgame = (function() {
         }
 
         interval = setInterval(function() {
-            var index = Math.floor(Math.random() * numVertexes);
-            var vertex = vertexes[index];
-            currentX = (currentX + vertex[0]) / 2;
-            currentY = (currentY + vertex[1]) / 2;
+            for (var i = 0; i < speed; i++) {
+                var index = Math.floor(Math.random() * numVertexes);
+                var vertex = vertexes[index];
+                currentX = (currentX + vertex[0]) / 2;
+                currentY = (currentY + vertex[1]) / 2;
 
-            var colorIndex = (index + Math.floor(index / COLORS.length)) % COLORS.length
-            context.fillStyle = COLORS[colorIndex];
+                var colorIndex = (index + Math.floor(index / COLORS.length)) % COLORS.length
+                context.fillStyle = COLORS[colorIndex];
 
-            context.fillRect(currentX, currentY, 1, 1);
+                context.fillRect(currentX, currentY, 1, 1);
+            }
         }, 10);
     }
 
@@ -97,12 +101,17 @@ var chaosgame = (function() {
         mainElement = element;
     }
 
+    function setSpeed(s) {
+        speed = s;
+    }
+
     return {
         start: start,
         stop: stop,
         restart: restart,
         setDimensions: setDimensions,
         setNumVertexes: setNumVertexes,
-        setMainElement: setMainElement
+        setMainElement: setMainElement,
+        setSpeed: setSpeed
     };
 })();

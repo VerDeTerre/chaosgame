@@ -22,6 +22,11 @@
             <h1>Chaos Game</h1>
             <div id="main"></div>
             Vertexes: <select id="numVertexes"></select>
+            Speed: <select id="speed">
+                <option value="1">Slow</option>
+                <option value="100">Quick</option>
+                <option value="10000">Fast</option>
+            </select>
             <button id="play">Play</button>
             <button id="pause">Pause</button>
             <button id="restart">Restart</button>
@@ -42,6 +47,12 @@
                 chaosgame.restart();
             });
 
+            var speed = document.getElementById('speed');
+
+            speed.addEventListener('change', function() {
+                chaosgame.setSpeed(speed.value);
+            });
+
             document.getElementById('play').addEventListener('click', function() {
                 chaosgame.start();
             });
@@ -55,6 +66,7 @@
             });
 
             chaosgame.setNumVertexes(numVertexes.value);
+            chaosgame.setSpeed(speed.value);
             chaosgame.start();
         </script>
     </body>
